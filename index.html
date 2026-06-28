@@ -3,31 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Turnos de Riego Julio 2026 - Comunidad de Regantes San Juan</title>
   <meta name="description" content="Consulta los turnos de riego de julio de 2026 de la Comunidad de Regantes San Juan.">
+
   <meta property="og:type" content="website">
   <meta property="og:url" content="[crlaluenga2-sudo.github.io](https://crlaluenga2-sudo.github.io/Turnos-de-Riego-Julio/)">
-  <meta property="og:site_name" content="Comunidad de Regantes San Juan">
   <meta property="og:title" content="Turnos de Riego Julio 2026">
   <meta property="og:description" content="Consulta tu turno de riego de julio de 2026 por nombre. Es importante respetar escrupulosamente los turnos asignados.">
-  <meta property="og:image" content="[crlaluenga2-sudo.github.io](https://crlaluenga2-sudo.github.io/Turnos-de-Riego-Julio/imagen-whatsapp22.jpg">
-  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image" content="[crlaluenga2-sudo.github.io](https://crlaluenga2-sudo.github.io/Turnos-de-Riego-Julio/imagen-whatsapp22.jpg)">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Cartel de Turnos de Riego Julio 2026 de la Comunidad de Regantes San Juan">
   <meta property="og:locale" content="es_ES">
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Turnos de Riego Julio 2026">
   <meta name="twitter:description" content="Consulta tu turno de riego de julio de 2026 por nombre.">
   <meta name="twitter:image" content="[crlaluenga2-sudo.github.io](https://crlaluenga2-sudo.github.io/Turnos-de-Riego-Julio/imagen-whatsapp22.jpg)">
+
   <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
   <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,700;1,300&family=Inter:wght@400;500;600&display=swap)" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --verde: #2d5016; --verde-mid: #4a7c23;
+      --dorado: #c8932a; --dorado-light: #f0c060;
+      --crema: #faf7f0; --crema-dark: #f0ebe0;
+      --gris: #3d4a2e; --gris-light: #8a9478; --blanco: #ffffff;
+      --shadow: 0 2px 12px rgba(45,80,22,0.10);
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--crema); color: var(--gris); min-height: 100vh; }
+    header { background: var(--verde); padding: 36px 24px 32px; text-align: center; position: relative; overflow: hidden; }
+    header::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0px, transparent 38px, rgba(255,255,255,0.03) 38px, rgba(255,255,255,0.03) 40px); }
+    header .eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dorado-light); margin-bottom: 10px; position: relative; }
+    header h1 { font-family: 'Fraunces', serif; font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; color: var(--blanco); line-height: 1.1; position: relative; }
+    header h1 em { font-style: italic; font-weight: 300; color: var(--dorado-light); }
+    header .subtitle { margin-top: 8px; font-size: 0.88rem; color: rgba(255,255,255,0.6); position: relative; }
+    .search-wrap { max-width: 680px; margin: -22px auto 0; padding: 0 20px; position: relative; z-index: 10; }
+    .search-box { display: flex; align-items: center; background: var(--blanco); border-radius: 12px; box-shadow: 0 4px 24px rgba(45,80,22,0.18); border: 2px solid transparent; transition: border-color 0.2s; overflow: hidden; }
+    .search-box:focus-within { border-color: var(--verde-mid); }
+    .search-icon { padding: 0 14px 0 18px; color: var(--gris-light); flex-shrink: 0; }
+    #searchInput { flex: 1; border: none; outline: none; padding: 17px 4px; font-family: 'Inter', sans-serif; font-size: 1.05rem; color: var(--gris); background: transparent; }
+    #searchInput::placeholder { color: #b0b8a0; }
+    .clear-btn { padding: 0 16px; background: none; border: none; cursor: pointer; color: var(--gris-light); font-size: 1.1rem; display: none; line-height: 1; }
+    .clear-btn.visible { display: block; }
+    .stats-bar { max-width: 900px; margin: 18px auto 0; padding: 0 20px; font-size: 0.82rem; color: var(--gris-light); }
+    .stats-bar strong { color: var(--verde); }
+    .legend { max-width: 900px; margin: 8px auto 0; padding: 0 20px; display: flex; gap: 16px; align-items: center; font-size: 0.78rem; color: var(--gris-light); }
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+    .legend-dot { width: 14px; height: 14px; border-radius: 3px; }
+    .legend-dot.on  { background: var(--verde-mid); }
+    .legend-dot.off { background: #e2e8da; }
+    .legend-dot.gap { background: var(--blanco); border: 2px solid #ccc; }
+    .results { max-width: 900px; margin: 14px auto 60px; padding: 0 20px; }
+    .ficha { background: var(--blanco); border-radius: 14px; box-shadow: var(--shadow); margin-bottom: 20px; overflow: hidden; border: 1px solid rgba(45,80,22,0.07); animation: fadeUp 0.25s ease both; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .ficha-header { background: var(--verde); padding: 16px 22px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .ficha-nombre { font-family: 'Fraunces', serif; font-size: 1.12rem; font-weight: 600; color: var(--blanco); }
+    .ficha-count { font-size: 0.75rem; font-weight: 500; background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.85); border-radius: 20px; padding: 3px 10px; white-space: nowrap; }
+    .parcela-row { padding: 14px 22px; border-bottom: 1px solid var(--crema-dark); }
+    .parcela-row:last-child { border-bottom: none; }
+    .parcela-row:nth-child(even) { background: #fbf9f5; }
+    .parcela-nombre { font-weight: 600; font-size: 0.95rem; color: var(--gris); margin-bottom: 6px; }
+    .parcela-modulos { display: inline-flex; align-items: center; gap: 5px; font-size: 0.78rem; color: var(--dorado); font-weight: 600; background: #fef8ec; border: 1px solid #f0d080; border-radius: 6px; padding: 2px 8px; margin-bottom: 10px; }
+    .timeline-label { font-size: 0.72rem; color: var(--gris-light); margin-bottom: 4px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+    .timeline-bar { display: flex; border-radius: 6px; overflow: hidden; height: 20px; width: 100%; }
+    .slot-on  { background: var(--verde-mid); height: 100%; flex: none; }
+    .slot-off { background: #e2e8da; height: 100%; flex: none; }
+    .slot-gap { background: var(--blanco); height: 100%; flex: none; border-left: 2px solid #bbb; border-right: 2px solid #bbb; }
+    .timeline-axis { position: relative; height: 16px; margin-top: 3px; width: 100%; }
+    .axis-label { position: absolute; font-size: 0.62rem; color: #a0a890; white-space: nowrap; transform: translateX(-50%); }
+    .axis-label.first { transform: translateX(0); }
+    .axis-label.last  { transform: translateX(-100%); }
+    .horarios-wrap { margin-top: 7px; display: flex; flex-wrap: wrap; gap: 5px; }
+    .horario-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.82rem; font-weight: 600; color: var(--verde); background: #eef5e4; border-radius: 6px; padding: 3px 10px; }
+    .horario-badge.sin { color: var(--gris-light); background: #f0f0f0; }
+    .empty { text-align: center; padding: 60px 20px; color: var(--gris-light); }
+    .empty .big { font-size: 3rem; margin-bottom: 12px; }
+    .empty p { font-family: 'Fraunces', serif; font-size: 1.1rem; font-style: italic; }
+    @media (max-width: 600px) {
+      .ficha-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+    }
+  </style>
 </head>
 <body>
 <header>
   <div class="eyebrow">Comunidad de Regantes</div>
   <h1>Turnos de <em>Riego</em></h1>
-  <div class="subtitle">Julio 2026 · Consulta tu horario por nombre</div>
+  <div class="subtitle">Julio 2026 Â· Consulta tu horario por nombre</div>
 </header>
 <div class="search-wrap">
   <div class="search-box">
@@ -36,20 +101,20 @@
         <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
       </svg>
     </span>
-    <input type="text" id="searchInput" placeholder="Busca tu nombre…" autocomplete="off" autocorrect="off" spellcheck="false">
-    <button class="clear-btn" id="clearBtn" aria-label="Borrar búsqueda">✕</button>
+    <input type="text" id="searchInput" placeholder="Busca tu nombreâ€¦" autocomplete="off" autocorrect="off" spellcheck="false">
+    <button class="clear-btn" id="clearBtn" aria-label="Borrar bÃºsqueda">âœ•</button>
   </div>
 </div>
 <div class="stats-bar"><span id="statsText"></span></div>
 <div class="legend">
   <div class="legend-item"><div class="legend-dot on"></div><span>Riego activo</span></div>
   <div class="legend-item"><div class="legend-dot off"></div><span>Sin riego</span></div>
-  <div class="legend-item"><div class="legend-dot gap"></div><span>Fuera de turno (18h–22h)</span></div>
+  <div class="legend-item"><div class="legend-dot gap"></div><span>Fuera de turno (18hâ€“22h)</span></div>
 </div>
 <div class="results" id="results"></div>
 
 <script>
-const DATA = {"ALONSO VICARIO CONCEPCIÓN": [{"parcela": "REGUERO", "modulos": 11, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}], "ALQUEZAR LABAD JOSE M": [{"parcela": "MOYER", "modulos": 6, "slots": [1, 1, 0, 0, 1, 1, 1, 1, 0]}, {"parcela": "LOTE", "modulos": 9, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "LOTE DEPOSITO", "modulos": 3, "slots": [0, 0, 0, 0, 0, 1, 1, 1, 0]}, {"parcela": "CONCELLO", "modulos": 9, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "CONCELLO NUEVO", "modulos": 7, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 0]}, {"parcela": "TORRE", "modulos": 8, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}], "BARROS ABENOZA RUBEN": [{"parcela": "SASO", "modulos": 5, "slots": [0, 0, 0, 1, 1, 1, 1, 1, 0]}], "BESCOS BARROS JOSE ALBERTO": [{"parcela": "SASO", "modulos": 9, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}], "BOMETON BORRUEL VICTOR": [{"parcela": "139 RAYGRAS", "modulos": 5, "slots": [0, 1, 0, 0, 1, 1, 1, 1, 1]}], "BONED DEFIOR JOSE LUIS": [{"parcela": "pol 18 parcela 34", "modulos": 3, "slots": [0, 1, 0, 0, 0, 0, 1, 1, 1]}], "BUERA PARDINA IVAN": [{"parcela": "SASO", "modulos": 4, "slots": [0, 0, 0, 1, 1, 1, 1, 0, 0]}], "CANCER BARECHE JAVIER": [{"parcela": "LOTE 1", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}, {"parcela": "SASO", "modulos": 2, "slots": [0, 0, 0, 1, 1, 0, 0, 0, 0]}], "CAPABLO AZARA BORJA": [{"parcela": "TORRE", "modulos": 3, "slots": [1, 1, 0, 1, 0, 0, 0, 0, 1]}], "CASTRO ALQUEZAR ANTONIO": [{"parcela": "LOTE", "modulos": 11, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "SASO", "modulos": 3, "slots": [0, 0, 0, 1, 1, 1, 0, 0, 0]}, {"parcela": "ZABI", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 1, 0]}], "CASTRO SOLANO JOSE ANTONIO": [{"parcela": "SASO", "modulos": 4, "slots": [0, 0, 0, 1, 0, 1, 1, 1, 0]}, {"parcela": "SASO", "modulos": 5, "slots": [0, 1, 0, 0, 1, 1, 1, 1, 1]}, {"parcela": "LOTE", "modulos": 10, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}], "CLAU LABORDA JOAQUIN": [{"parcela": "SASO", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}, {"parcela": "TORRE", "modulos": 2, "slots": [0, 0, 0, 0, 0, 0, 1, 1, 0]}], "CLAU LANUZA IVAN": [{"parcela": "MONTEARRUEGO", "modulos": 6, "slots": [1, 1, 0, 0, 1, 1, 1, 1, 0]}], "CLAVERO AZOR RAMON": [{"parcela": "SASO", "modulos": 6, "slots": [1, 1, 0, 1, 1, 1, 1, 0, 0]}, {"parcela": "ZABI", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}, {"parcela": "TORRE", "modulos": 2, "slots": [0, 0, 0, 0, 0, 0, 1, 1, 0]}], "ESCALONA AZARA ENRIQUE": [{"parcela": "MUYER", "modulos": 2, "slots": [0, 0, 0, 1, 1, 0, 0, 0, 0]}], "ESCUDERO SALVATIERRA MANEL": [{"parcela": "MONTEARRUEGO", "modulos": 9, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "MUYER", "modulos": 4, "slots": [1, 1, 0, 1, 1, 0, 0, 0, 1]}], "FERRAZ CLAVERO JAVIER": [{"parcela": "TORRE BAJA", "modulos": 4, "slots": [0, 0, 0, 1, 1, 1, 1, 0, 0]}], "JAL DOMINGUEZ JOSE LUIS": [{"parcela": "LOTE", "modulos": 8, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "TORRE", "modulos": 4, "slots": [0, 0, 0, 1, 1, 1, 1, 0, 0]}, {"parcela": "TORRE OPI", "modulos": 5, "slots": [0, 0, 0, 1, 1, 1, 1, 1, 0]}, {"parcela": "MUYER GRANDE", "modulos": 5, "slots": [1, 1, 0, 1, 1, 1, 0, 0, 0]}, {"parcela": "MUYER ARNILLAS", "modulos": 3, "slots": [1, 1, 0, 1, 0, 0, 0, 0, 1]}], "JUSTE SUELVES JOSE LUIS": [{"parcela": "MUYER", "modulos": 6, "slots": [0, 0, 0, 0, 1, 1, 1, 1, 1]}], "LABORDA MUR JOSE": [{"parcela": "FACERA", "modulos": 11, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "SASO", "modulos": 8, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "SASO", "modulos": 3, "slots": [0, 0, 0, 0, 0, 1, 1, 1, 0]}, {"parcela": "SASO", "modulos": 1, "slots": [0, 0, 0, 1, 0, 0, 0, 0, 0]}], "MOLINA CAMBRA JORGE": [{"parcela": "MUYER", "modulos": 3, "slots": [0, 0, 0, 0, 0, 1, 1, 1, 0]}], "MUR BESCOS ISABEL JOSEFA": [{"parcela": "TORRE 1", "modulos": 1, "slots": [0, 0, 0, 0, 0, 0, 0, 1, 0]}, {"parcela": "TORRE 2", "modulos": 1, "slots": [0, 0, 0, 0, 0, 0, 0, 1, 0]}], "MUR PLANA SONIA": [{"parcela": "TORRE CASETA", "modulos": 3, "slots": [0, 0, 0, 0, 0, 1, 1, 1, 0]}, {"parcela": "TORRE", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}], "PEREZ DOMPER MARIANO": [{"parcela": "LOTE ARRIBA", "modulos": 6, "slots": [1, 0, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "SASO EMILIANO", "modulos": 6, "slots": [1, 0, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "SASO LINO", "modulos": 5, "slots": [1, 1, 0, 1, 1, 1, 0, 0, 1]}, {"parcela": "TORRE MODREGO", "modulos": 3, "slots": [1, 1, 0, 0, 0, 0, 0, 1, 1]}], "PLANA HERMANOS": [{"parcela": "LOTE EDUARDO", "modulos": 7, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}], "RIOS MOLINER ENRIQUE": [{"parcela": "FACERA", "modulos": 4, "slots": [1, 1, 0, 1, 1, 0, 0, 0, 1]}, {"parcela": "FACERA ELVIRA", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}, {"parcela": "TORRE JUSTE-LAGUDER", "modulos": 5, "slots": [0, 0, 0, 1, 1, 1, 1, 1, 0]}], "TOMAS URGELES JOSE TOMAS": [{"parcela": "", "modulos": 4, "slots": [1, 1, 0, 0, 0, 0, 1, 1, 1]}], "TRALLERO TORRES CARLOS": [{"parcela": "MUYER ARRIBA", "modulos": 3, "slots": [0, 0, 0, 1, 1, 1, 0, 0, 0]}, {"parcela": "MUYER ABAJO compartido", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}], "VICEN VELILLA FRANCISCO JAVIER": [{"parcela": "ZABI", "modulos": 4, "slots": [1, 1, 0, 0, 0, 0, 1, 1, 1]}], "VIDAL BAILO MIGUEL ANGEL": [{"parcela": "TORRE ASCENSION", "modulos": 4, "slots": [0, 0, 0, 1, 1, 1, 1, 0, 0]}, {"parcela": "TORRE", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}]};
+const DATA = {"ALONSO VICARIO CONCEPCIÃ“N": [{"parcela": "REGUERO", "modulos": 11, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}], "ALQUEZAR LABAD JOSE M": [{"parcela": "MOYER", "modulos": 6, "slots": [1, 1, 0, 0, 1, 1, 1, 1, 0]}, {"parcela": "LOTE", "modulos": 9, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "LOTE DEPOSITO", "modulos": 3, "slots": [0, 0, 0, 0, 0, 1, 1, 1, 0]}, {"parcela": "CONCELLO", "modulos": 9, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "CONCELLO NUEVO", "modulos": 7, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 0]}, {"parcela": "TORRE", "modulos": 8, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}], "BARROS ABENOZA RUBEN": [{"parcela": "SASO", "modulos": 5, "slots": [0, 0, 0, 1, 1, 1, 1, 1, 0]}], "BESCOS BARROS JOSE ALBERTO": [{"parcela": "SASO", "modulos": 9, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}], "BOMETON BORRUEL VICTOR": [{"parcela": "139 RAYGRAS", "modulos": 5, "slots": [0, 1, 0, 0, 1, 1, 1, 1, 1]}], "BONED DEFIOR JOSE LUIS": [{"parcela": "pol 18 parcela 34", "modulos": 3, "slots": [0, 1, 0, 0, 0, 0, 1, 1, 1]}], "BUERA PARDINA IVAN": [{"parcela": "SASO", "modulos": 4, "slots": [0, 0, 0, 1, 1, 1, 1, 0, 0]}], "CANCER BARECHE JAVIER": [{"parcela": "LOTE 1", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}, {"parcela": "SASO", "modulos": 2, "slots": [0, 0, 0, 1, 1, 0, 0, 0, 0]}], "CAPABLO AZARA BORJA": [{"parcela": "TORRE", "modulos": 3, "slots": [1, 1, 0, 1, 0, 0, 0, 0, 1]}], "CASTRO ALQUEZAR ANTONIO": [{"parcela": "LOTE", "modulos": 11, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "SASO", "modulos": 3, "slots": [0, 0, 0, 1, 1, 1, 0, 0, 0]}, {"parcela": "ZABI", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 1, 0]}], "CASTRO SOLANO JOSE ANTONIO": [{"parcela": "SASO", "modulos": 4, "slots": [0, 0, 0, 1, 0, 1, 1, 1, 0]}, {"parcela": "SASO", "modulos": 5, "slots": [0, 1, 0, 0, 1, 1, 1, 1, 1]}, {"parcela": "LOTE", "modulos": 10, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}], "CLAU LABORDA JOAQUIN": [{"parcela": "SASO", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}, {"parcela": "TORRE", "modulos": 2, "slots": [0, 0, 0, 0, 0, 0, 1, 1, 0]}], "CLAU LANUZA IVAN": [{"parcela": "MONTEARRUEGO", "modulos": 6, "slots": [1, 1, 0, 0, 1, 1, 1, 1, 0]}], "CLAVERO AZOR RAMON": [{"parcela": "SASO", "modulos": 6, "slots": [1, 1, 0, 1, 1, 1, 1, 0, 0]}, {"parcela": "ZABI", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}, {"parcela": "TORRE", "modulos": 2, "slots": [0, 0, 0, 0, 0, 0, 1, 1, 0]}], "ESCALONA AZARA ENRIQUE": [{"parcela": "MUYER", "modulos": 2, "slots": [0, 0, 0, 1, 1, 0, 0, 0, 0]}], "ESCUDERO SALVATIERRA MANEL": [{"parcela": "MONTEARRUEGO", "modulos": 9, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "MUYER", "modulos": 4, "slots": [1, 1, 0, 1, 1, 0, 0, 0, 1]}], "FERRAZ CLAVERO JAVIER": [{"parcela": "TORRE BAJA", "modulos": 4, "slots": [0, 0, 0, 1, 1, 1, 1, 0, 0]}], "JAL DOMINGUEZ JOSE LUIS": [{"parcela": "LOTE", "modulos": 8, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "TORRE", "modulos": 4, "slots": [0, 0, 0, 1, 1, 1, 1, 0, 0]}, {"parcela": "TORRE OPI", "modulos": 5, "slots": [0, 0, 0, 1, 1, 1, 1, 1, 0]}, {"parcela": "MUYER GRANDE", "modulos": 5, "slots": [1, 1, 0, 1, 1, 1, 0, 0, 0]}, {"parcela": "MUYER ARNILLAS", "modulos": 3, "slots": [1, 1, 0, 1, 0, 0, 0, 0, 1]}], "JUSTE SUELVES JOSE LUIS": [{"parcela": "MUYER", "modulos": 6, "slots": [0, 0, 0, 0, 1, 1, 1, 1, 1]}], "LABORDA MUR JOSE": [{"parcela": "FACERA", "modulos": 11, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "SASO", "modulos": 8, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "SASO", "modulos": 3, "slots": [0, 0, 0, 0, 0, 1, 1, 1, 0]}, {"parcela": "SASO", "modulos": 1, "slots": [0, 0, 0, 1, 0, 0, 0, 0, 0]}], "MOLINA CAMBRA JORGE": [{"parcela": "MUYER", "modulos": 3, "slots": [0, 0, 0, 0, 0, 1, 1, 1, 0]}], "MUR BESCOS ISABEL JOSEFA": [{"parcela": "TORRE 1", "modulos": 1, "slots": [0, 0, 0, 0, 0, 0, 0, 1, 0]}, {"parcela": "TORRE 2", "modulos": 1, "slots": [0, 0, 0, 0, 0, 0, 0, 1, 0]}], "MUR PLANA SONIA": [{"parcela": "TORRE CASETA", "modulos": 3, "slots": [0, 0, 0, 0, 0, 1, 1, 1, 0]}, {"parcela": "TORRE", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}], "PEREZ DOMPER MARIANO": [{"parcela": "LOTE ARRIBA", "modulos": 6, "slots": [1, 0, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "SASO EMILIANO", "modulos": 6, "slots": [1, 0, 0, 1, 1, 1, 1, 1, 1]}, {"parcela": "SASO LINO", "modulos": 5, "slots": [1, 1, 0, 1, 1, 1, 0, 0, 1]}, {"parcela": "TORRE MODREGO", "modulos": 3, "slots": [1, 1, 0, 0, 0, 0, 0, 1, 1]}], "PLANA HERMANOS": [{"parcela": "LOTE EDUARDO", "modulos": 7, "slots": [1, 1, 0, 1, 1, 1, 1, 1, 1]}], "RIOS MOLINER ENRIQUE": [{"parcela": "FACERA", "modulos": 4, "slots": [1, 1, 0, 1, 1, 0, 0, 0, 1]}, {"parcela": "FACERA ELVIRA", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}, {"parcela": "TORRE JUSTE-LAGUDER", "modulos": 5, "slots": [0, 0, 0, 1, 1, 1, 1, 1, 0]}], "TOMAS URGELES JOSE TOMAS": [{"parcela": "", "modulos": 4, "slots": [1, 1, 0, 0, 0, 0, 1, 1, 1]}], "TRALLERO TORRES CARLOS": [{"parcela": "MUYER ARRIBA", "modulos": 3, "slots": [0, 0, 0, 1, 1, 1, 0, 0, 0]}, {"parcela": "MUYER ABAJO compartido", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}], "VICEN VELILLA FRANCISCO JAVIER": [{"parcela": "ZABI", "modulos": 4, "slots": [1, 1, 0, 0, 0, 0, 1, 1, 1]}], "VIDAL BAILO MIGUEL ANGEL": [{"parcela": "TORRE ASCENSION", "modulos": 4, "slots": [0, 0, 0, 1, 1, 1, 1, 0, 0]}, {"parcela": "TORRE", "modulos": 2, "slots": [1, 1, 0, 0, 0, 0, 0, 0, 1]}]};
 const SLOTS_META = [{"col_idx": 3, "start": "14:00", "end": "16:00", "is_gap": false}, {"col_idx": 4, "start": "16:00", "end": "18:00", "is_gap": false}, {"col_idx": null, "start": "18:00", "end": "22:00", "is_gap": true}, {"col_idx": 6, "start": "22:00", "end": "00:00", "is_gap": false}, {"col_idx": 7, "start": "00:00", "end": "02:00", "is_gap": false}, {"col_idx": 8, "start": "02:00", "end": "04:00", "is_gap": false}, {"col_idx": 9, "start": "04:00", "end": "06:00", "is_gap": false}, {"col_idx": 10, "start": "06:00", "end": "08:00", "is_gap": false}, {"col_idx": 11, "start": "08:00", "end": "09:00", "is_gap": false}];
 const SLOT_WIDTHS = [10.5263, 10.5263, 21.0526, 10.5263, 10.5263, 10.5263, 10.5263, 10.5263, 5.2632];
 const AXIS = [{"label": "14:00", "pct": 0.0}, {"label": "16:00", "pct": 10.5263}, {"label": "18:00", "pct": 21.0526}, {"label": "22:00", "pct": 42.1053}, {"label": "00:00", "pct": 52.6316}, {"label": "02:00", "pct": 63.1579}, {"label": "04:00", "pct": 73.6842}, {"label": "06:00", "pct": 84.2105}, {"label": "08:00", "pct": 94.7368}, {"label": "09:00", "pct": 100.0}];
@@ -60,18 +125,18 @@ function getGroups(slots) {
   for (let i = 0; i < slots.length; i++) {
     const sm = SLOTS_META[i];
     if (sm.is_gap) {
-      if (start !== null) { groups.push(start + ' – ' + prevEnd); start = null; prevEnd = null; }
+      if (start !== null) { groups.push(start + ' â€“ ' + prevEnd); start = null; prevEnd = null; }
       continue;
     }
     if (slots[i] === 1) {
       if (start === null) { start = sm.start; prevEnd = sm.end; }
       else if (sm.start === prevEnd) { prevEnd = sm.end; }
-      else { groups.push(start + ' – ' + prevEnd); start = sm.start; prevEnd = sm.end; }
+      else { groups.push(start + ' â€“ ' + prevEnd); start = sm.start; prevEnd = sm.end; }
     } else {
-      if (start !== null) { groups.push(start + ' – ' + prevEnd); start = null; prevEnd = null; }
+      if (start !== null) { groups.push(start + ' â€“ ' + prevEnd); start = null; prevEnd = null; }
     }
   }
-  if (start !== null) groups.push(start + ' – ' + prevEnd);
+  if (start !== null) groups.push(start + ' â€“ ' + prevEnd);
   return groups;
 }
 
@@ -80,8 +145,8 @@ function renderBar(slots) {
     const sm = SLOTS_META[i];
     const w = SLOT_WIDTHS[i] + '%';
     if (sm.is_gap) return `<div class="slot-gap" style="width:${w}"></div>`;
-    if (v === 1)   return `<div class="slot-on"  style="width:${w}" title="${sm.start}–${sm.end}"></div>`;
-                   return `<div class="slot-off" style="width:${w}" title="${sm.start}–${sm.end}"></div>`;
+    if (v === 1)   return `<div class="slot-on"  style="width:${w}" title="${sm.start}â€“${sm.end}"></div>`;
+                   return `<div class="slot-off" style="width:${w}" title="${sm.start}â€“${sm.end}"></div>`;
   }).join('');
 }
 
@@ -100,12 +165,12 @@ function renderFicha(nombre, parcelas) {
     const groups = getGroups(p.slots);
     const horarioHtml = groups.length === 0
       ? `<div class="horario-badge sin">Sin asignar</div>`
-      : groups.map(g => `<div class="horario-badge">🕐 ${g}</div>`).join('');
+      : groups.map(g => `<div class="horario-badge">ðŸ• ${g}</div>`).join('');
     return `<div class="parcela-row">
-      <div class="parcela-nombre">${p.parcela || '—'}</div>
+      <div class="parcela-nombre">${p.parcela || 'â€”'}</div>
       <div class="parcela-modulos">
         <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-        ${p.modulos} módulo${p.modulos !== 1 ? 's' : ''}
+        ${p.modulos} mÃ³dulo${p.modulos !== 1 ? 's' : ''}
       </div>
       <div class="timeline-label">Ventana de riego</div>
       <div class="timeline-bar">${renderBar(p.slots)}</div>
@@ -127,7 +192,7 @@ function render(query) {
   const names = Object.keys(DATA);
   const filtered = q ? names.filter(n => n.toLowerCase().includes(q)) : names;
   if (!filtered.length) {
-    results.innerHTML = `<div class="empty"><div class="big">🌾</div><p>No se encontró ningún regante con ese nombre.</p></div>`;
+    results.innerHTML = `<div class="empty"><div class="big">ðŸŒ¾</div><p>No se encontrÃ³ ningÃºn regante con ese nombre.</p></div>`;
     statsText.innerHTML = `Sin resultados para "<strong>${query}</strong>"`;
     return;
   }
